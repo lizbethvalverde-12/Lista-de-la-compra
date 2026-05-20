@@ -1,0 +1,31 @@
+
+Opción C (Lista de la compra): Cambiada la gestión de tareas por un control de productos para el supermercado.
+
+2. Base de Datos (Tabla Productos)
+Id: INTEGER (Clave primaria).
+
+Nombre: TEXT (Nombre del producto).
+
+Cantidad: INTEGER (Campo extra añadido).
+
+Comprado: INTEGER (0 = No / 1 = Sí).
+
+3. URLs y Acciones
+/Productos -> Lista completa.
+
+/Productos?filtro=pendientes -> Lista filtrada por lo que falta.
+
+/Productos/Crear -> Formulario para añadir producto.
+
+/Productos/Editar/{id} -> Formulario para modificar producto.
+
+/Productos/Completar/{id} -> Marcar como comprado ("SI").
+
+/Productos/Eliminar/{id} -> Borrar producto.
+
+4. Cambios del Código Base
+Modelo: Se creó Producto.cs incluyendo la propiedad Cantidad.
+
+Controlador: Se cambiaron las consultas SQL a la tabla Productos, se  hizo  el método Editar, se aplicó el filtrado .Where() con LINQ en el Index y se validó que el nombre tenga más de 2 letras y la cantidad sea mayor a 0.
+
+Vistas: Se añadieron los botones de filtro con estilos dinámicos.

@@ -1,0 +1,31 @@
+@model TodoMVC.Models.Producto
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<div class="container container-sm">
+    <h1>Editar Producto</h1>
+
+    <form method="post" action="/Productos/Editar">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="Comprado" value="@(Model.Comprado ? "true" : "false")" />
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label for="Nombre">Nombre del producto</label>
+            <input type="text" id="Nombre" name="Nombre" value="@Model.Nombre" autofocus required />
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+            <label for="Cantidad">Cantidad</label>
+            <input type="number" id="Cantidad" name="Cantidad" value="@Model.Cantidad" min="1" required />
+        </div>
+
+        <div class="form-actions" style="margin-top: 20px;">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <a href="/Productos/Index" class="btn">Cancelar</a>
+        </div>
+    </form>
+</div>

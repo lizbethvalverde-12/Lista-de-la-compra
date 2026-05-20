@@ -1,0 +1,118 @@
+/* ── Reset básico ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f0f4f8;
+    color: #2d3748;
+    min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+    background: #2b6cb0;
+    padding: 1rem 2rem;
+}
+header a {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* ── Contenedor ── */
+.container {
+    max-width: 700px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+.container-sm { max-width: 480px; padding: 2rem; }
+
+/* ── Cabecera de la tarjeta ── */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+.card-header h1 { font-size: 1.4rem; }
+
+/* ── Lista de tareas ── */
+.task-list { list-style: none; }
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.15s;
+}
+.task-item:hover { background: #f7fafc; }
+.task-item:last-child { border-bottom: none; }
+
+.task-item.done .task-title {
+    opacity: 0.45;
+    text-decoration: line-through;
+}
+
+.task-title { font-size: 1rem; }
+.task-actions { display: flex; gap: 0.5rem; }
+
+/* ── Vacío ── */
+.empty {
+    text-align: center;
+    padding: 3rem;
+    color: #a0aec0;
+}
+
+/* ── Botones ── */
+.btn {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    background: #edf2f7;
+    color: #2d3748;
+    text-decoration: none;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn:hover { background: #e2e8f0; }
+
+.btn-primary { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.btn-primary:hover { background: #2c5282; }
+
+.btn-success { background: #38a169; color: white; border-color: #38a169; }
+.btn-success:hover { background: #2f855a; }
+
+.btn-danger  { background: #e53e3e; color: white; border-color: #e53e3e; }
+.btn-danger:hover  { background: #c53030; }
+
+/* ── Formulario ── */
+h1 { font-size: 1.4rem; margin-bottom: 1.5rem; }
+
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+.form-group input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.form-group input:focus { border-color: #2b6cb0; }
+
+.form-actions { display: flex; gap: 0.7rem; margin-top: 1.5rem; }

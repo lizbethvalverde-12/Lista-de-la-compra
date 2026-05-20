@@ -1,0 +1,49 @@
+@model List<TodoMVC.Models.Producto>
+
+@{
+    ViewData["Title"] = "Mis Productos";
+}
+
+<div class="container">
+    <div class="card-header">
+        <h1> Mis Productos</h1>
+        <a href="/Productos/Crear" class="btn btn-primary">+ Nuevo Producto</a>
+    </div>
+
+    <div class="filters" style="margin-top: 15px; margin-bottom: 15px; display: flex; gap: 10px;">
+        <a href="/Productos?filtro=todos"
+           class="btn @(ViewData["FiltroActual"]?.ToString() == "todos" ? "btn-primary" : "btn-outline-primary")">Todos</a>
+        <a href="/Productos?filtro=pendientes"
+           class="btn @(ViewData["FiltroActual"]?.ToString() == "pendientes" ? "btn-primary" : "btn-outline-primary")">Pendientes</a>
+        <a href="/Productos?filtro=comprados"
+           class="btn @(ViewData["FiltroActual"]?.ToString() == "comprados" ? "btn-primary" : "btn-outline-primary")">Comprados</a>
+    </div>
+
+    @if (Model.Count == 0)
+    {
+        <p class="empty">Añadir productos!</p>
+    }
+    else
+    {
+        <ul class="task-list">
+            @foreach (var producto in Model)
+            {
+                <li class="task-item @(producto.Comprado ? "done" : "")">
+                    <span class="task-title">
+                        @(producto.Comprado ? "SI" : "NO") @producto.Nombre (Cant: @producto.Cantidad)
+                    </span>
+                    <span class="task-actions">
+                        @if (!producto.Comprado)
+                        {
+                            <a href="/Productos/Completar/@producto.Id" class="btn btn-success">Completar</a>
+                        }
+                        <a href="/Productos/Editar/@producto.Id" class="btn btn-primary">Editar</a>
+
+                        <a href="/Productos/Eliminar/@producto.Id" class="btn btn-danger"
+                           onclick="return confirm('¿Eliminar este Producto?')">Eliminar</a>
+                    </span>
+                </li>
+            }
+        </ul>
+    }
+</div>
