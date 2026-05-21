@@ -7,7 +7,7 @@ namespace TodoMVC.Controllers;
 
 public class ProductosController : Controller
 {
-    // 1. LISTAR PRODUCTOS
+    
     public IActionResult Index(string filtro = "todos")
     {
         var productos = new List<Producto>();
@@ -42,17 +42,17 @@ public class ProductosController : Controller
         return View(productos);
     }
 
-    // 2. CREAR PRODUCTO (GET)
+    
     public IActionResult Crear()
     {
         return View();
     }
 
-    // 2. CREAR PRODUCTO (POST) con validación (Mejora 2.3)
+    
     [HttpPost]
     public IActionResult Crear(Producto producto)
     {
-        // Validación: obligatorio, no vacío y mínimo 3 caracteres
+       
         if (string.IsNullOrWhiteSpace(producto.Nombre) || producto.Nombre.Trim().Length < 3)
         {
             ModelState.AddModelError("Nombre", "El nombre del producto debe tener al menos 3 caracteres.");
@@ -75,7 +75,7 @@ public class ProductosController : Controller
         return RedirectToAction("Index");
     }
 
-    // 3. EDITAR PRODUCTO (GET) - Pre-rellena el formulario (Mejora 2.2)
+    
     public IActionResult Editar(int id)
     {
         Producto producto = null;
@@ -102,7 +102,7 @@ public class ProductosController : Controller
         return View(producto);
     }
 
-    // 3. EDITAR PRODUCTO (POST) - Guarda los cambios en la BD (Mejora 2.2 y 2.3)
+    
     [HttpPost]
     public IActionResult Editar(Producto producto)
     {
@@ -124,7 +124,7 @@ public class ProductosController : Controller
         return RedirectToAction("Index");
     }
 
-    // 4. MARCAR COMO COMPRADO
+  
     public IActionResult Completar(int id)
     {
         using var conexion = Database.AbrirConexion();
@@ -136,7 +136,7 @@ public class ProductosController : Controller
         return RedirectToAction("Index");
     }
 
-    // 5. ELIMINAR PRODUCTO
+    
     public IActionResult Eliminar(int id)
     {
         using var conexion = Database.AbrirConexion();
